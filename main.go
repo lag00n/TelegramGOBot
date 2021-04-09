@@ -1,8 +1,8 @@
-package main
+aackage main
 
 import (
     "os"
-    "logs"
+    "log"
 
     tb "gopkg.in/tucnak/telebot.v2"
 )
