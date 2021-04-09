@@ -1,0 +1,37 @@
+package main
+
+import (
+    "os"
+    "logs"
+
+    tb "gopkg.in/tucnak/telebot.v2"
+)
+
+func main() {
+    var (
+        port        = os.Getenv("PORT")
+        publicURL   = os.Getenv("PUBLIC_URL")
+        token       = os.Getenv("TOKEN")
+    )
+
+    webhook := &tb.Webhook{
+        Listen:  ":" + port,
+        Endpoint: &tb.WebhookEndpoint{PublicURL: publicURL},
+    }
+
+    pref := tb.Settings{
+        Token:  token,
+        Poller: webhook,
+    }
+
+    b, err := tb.NewBot(pref)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    b.Handle("/iasmin", func(m *tb.Message) {
+        b.Send(m.Sender, "iasmin totosinha")
+    })
+
+    b.Start()
+}
