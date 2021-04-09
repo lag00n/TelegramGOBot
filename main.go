@@ -1,21 +1,21 @@
-aackage main
+package main
 
 import (
-    "os"
     "log"
+    "os"
 
     tb "gopkg.in/tucnak/telebot.v2"
 )
 
 func main() {
     var (
-        port        = os.Getenv("PORT")
-        publicURL   = os.Getenv("PUBLIC_URL")
-        token       = os.Getenv("TOKEN")
+        port      = os.Getenv("PORT")
+        publicURL = os.Getenv("PUBLIC_URL") // you must add it to your config vars
+        token     = os.Getenv("TOKEN")      // you must add it to your config vars
     )
 
     webhook := &tb.Webhook{
-        Listen:  ":" + port,
+        Listen:   ":" + port,
         Endpoint: &tb.WebhookEndpoint{PublicURL: publicURL},
     }
 
@@ -28,10 +28,10 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
-    b.Handle("/iasmin", func(m *tb.Message) {
-        b.Send(m.Sender, "iasmin totosinha")
-    })
+    
+    b.Handle("/hello", func(m *tb.Message) {
+    b.Send(m.Sender, "Hi!")
+})
 
     b.Start()
 }
