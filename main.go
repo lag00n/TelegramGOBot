@@ -32,4 +32,5 @@ func main() {
     b.Handle("/hello", func(m *tb.Message) {
     b.Send(m.Sender, "Hi!")
 })
+    b.Start()
 }
