@@ -28,9 +28,31 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    
-    b.Handle("/hello", func(m *tb.Message) {
-    b.Send(m.Sender, "Hi!")
-})
+
+    inlineBtn := tb.InlineButton{
+        Unique: "iasmin",
+        Text:   "iasmin :D"
+    }
+
+    b.Handle(&inlineBtn, func(c *tb.Callback) {
+        // necessário para o funcionamento
+        b.Respond(c, &tb.CallbackResponse{
+            ShowAlert: false,
+        })
+
+        b.Send(c.Sender, "iasmin totosa.")
+    })
+
+    inlineKeys := [][]tb.InlineButton{
+        []tb.InlineButton{inlineBtn1, inlineBtn2},
+    }
+
+    b.Handle("/iasmin", func(m *tb.Message) {
+        b.Send(
+            m.Sender,
+            "Iasmin é oq?",
+            &tb.ReplyMarkup{InlineKeyboard: inlineKeys})
+    })
+
     b.Start()
 }
