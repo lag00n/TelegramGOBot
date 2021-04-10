@@ -44,7 +44,7 @@ func main() {
     })
 
     inlineKeys := [][]tb.InlineButton{
-        []tb.InlineButton{inlineBtn1},
+        []tb.InlineButton{inlineBtn},
     }
 
     b.Handle("/iasmin", func(m *tb.Message) {
