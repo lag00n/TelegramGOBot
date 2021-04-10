@@ -31,7 +31,7 @@ func main() {
 
     inlineBtn := tb.InlineButton{
         Unique: "iasmin",
-        Text:   "iasmin :D",
+        Text:   "CONFIRA AQUI A RESPOSTA",
     }
 
     b.Handle(&inlineBtn, func(c *tb.Callback) {
