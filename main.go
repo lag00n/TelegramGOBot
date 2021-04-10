@@ -40,7 +40,7 @@ func main() {
             ShowAlert: false,
         })
 
-        b.Send(c.Sender, "mulher gostosa, mulher bem feita, linda do caralho"
+        b.Send(c.Sender, "mulher gostosa, mulher bem feita, linda do caralho")
     })
 
     inlineKeys := [][]tb.InlineButton{
